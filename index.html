@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Q1 Project</title>
+
+<style>
+    :root{
+      --deep-red: #B6463A;
+      --sky-blue: #A7C6E2;
+      --cream: #F4EDE4;
+      --muted-orange: #E69B56;
+      --dusty-navy: #3B4D67;
+
+      /*Section backgrounds*/
+      --bg-header: url("file:///C:/Users/Loriz/OneDrive/Documents/School/SY%202526/ICT%209/1ST%20QTR/Q1%20Project/header.jpg  ");
+      --bg-about:  url("images/bg-about.jpg");
+      --bg-gallery: url("file:///C:/Users/Loriz/OneDrive/Documents/School/SY%202526/ICT%209/1ST%20QTR/Q1%20Project/bg.jpg");
+      --bg-stats: url("file:///C:/Users/Loriz/OneDrive/Documents/School/SY%202526/ICT%209/1ST%20QTR/Q1%20Project/footer.jpg");
+
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--cream);font-family:'Poppins',system-ui,Arial,sans-serif;color:var(--dusty-navy);}
+  a{color:var(--deep-red);text-decoration:none}
+  img{max-width:100%;display:block}
+  .page {
+    max-width:1100px;
+    margin:24px auto;
+    padding:20px; }
+
+  .window {
+    border-radius:10px;
+    overflow:hidden;
+    background:linear-gradient(180deg,#fff,#f9f7f6);
+    border:3px solid rgba(0,0,0,0.06);
+    box-shadow: 8px 10px 0 rgba(0,0,0,0.06);}
+
+  .window .windowbar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 14px;
+    background:linear-gradient(#e9eef4,#dfeefb);
+    border-bottom:2px solid;}
+
+  .dot { width:12px;height:12px;border-radius:50%;display:inline-block }
+  .dot.red{background:#ff6b6b;}
+  .dot.yellow{background:#ffd166}
+  .dot.green{background:#6be56b}
+  .win-title{font-family:'Press Start 2P',monospace;font-size:12px;color:var(--dusty-navy);opacity:0.95}
+  header.intro-section{
+    position:relative;
+    min-height:320px;
+    background-image:var(--bg-header);
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:flex-end;
+    padding:28px;}
+
+  header .overlay{
+    width:100%;
+    background:linear-gradient(180deg, rgba(244,237,228,0.0) 10%, rgba(244,237,228,0.85) 85%);
+    padding:28px;
+    border-radius:6px;}
+
+  .hero {
+    display:flex;
+    gap:20px;
+    align-items:center;
+    max-width:980px;
+    margin:auto;}
+
+  .hero .photo {
+    width:170px;
+    height:170px;
+    border-radius:14px;
+    overflow:hidden;
+    border:6px solid rgba(255,255,255,0.9);
+    box-shadow: 6px 8px 0 rgba(0,0,0,0.06);
+    background:linear-gradient(180deg,#fff,#fdeff0);
+    flex-shrink:0;}
+
+  .hero .photo img{width:100%;height:100%;object-fit:cover}
+
+  .hero h1{
+    margin:0;font-family:'DM Serif Display',serif;font-size:36px;color:dusty-navy;
+    letter-spacing:0.5px;}
+
+  .hero p.lead{
+    margin:6px 0 0;color:var(--dusty-navy);opacity:0.9;max-width:650px;}
+
+  .sticker {
+    position:absolute;
+    width:74px;height:74px;
+    transform:rotate(-8deg);
+    border-radius:12px;
+    overflow:hidden;
+    background:white;
+    border:4px solid rgba(255,255,255,0.9);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.06);
+  }
+  .sticker.small{width:56px;height:56px;border-radius:10px}
+  .sticker img{width:80%;height:80%;object-fit:contain}
+
+  .section {
+    margin:36.67px 0;
+    padding:36.67px;
+    border-radius:14px;
+    position:relative;
+    overflow:visible;
+    background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.95));
+    border:2px solid rgba(0,0,0,0.04);
+  }
+
+  .about {
+    display:grid;
+    grid-template-columns: 1fr 320px;
+    gap:24px;
+    align-items:start;
+    background-image:var(--bg-about);
+    background-size:cover;
+    background-position:center;
+  }
+  
+  .about .card {
+    background:linear-gradient(180deg, rgba(244,237,228,0.95), rgba(255,255,255,0.9));
+    padding:18px;border-radius:12px;border:2px dashed rgba(0,0,0,0.06);
+    box-shadow: 6px 8px 0 rgba(230,155,86,0.08);
+  }
+  .about h2{font-family:'DM Serif Display';font-size:28px;margin:0 0 8px}
+  .profile-stats {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    font-size:14px;
+  }
+  .stat {
+    background:rgba(255,255,255,0.9);
+    padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.04);
+  }
+  .labels {font-weight:600;color:var(--deep-red);font-family:'Poppins',sans-serif}
+
+  .moodboard {
+    margin-top:16px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .polaroid {
+    width:160px;background:white;padding:8px;border-radius:8px;
+    border:6px solid #fff;box-shadow: 6px 8px 0 rgba(0,0,0,0.06);
+    transform:rotate(-2deg);
+  }
+  .polaroid img{width:100%;height:120px;object-fit:cover;border-radius:6px}
+
+  .gallery-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:18px;
+  }
+  .card-large {
+    background:linear-gradient(180deg,#fff,#fffefc);
+    border-radius:12px;border:3px solid rgba(0,0,0,0.04);
+    overflow:hidden;position:relative;
+  }
+  .card-large .img-wrap{
+    height:260px;overflow:hidden;
+  }
+  .card-large img{width:100%;height:100%;object-fit:cover;display:block}
+  .card-large .caption{
+    padding:12px;font-family:'Poppins';font-weight:600;color:var(--dusty-navy)}
+
+  .sticker-strip{
+    display:flex;gap:10px;padding:12px;margin-top:18px;flex-wrap:wrap;}
+  .sticker-btn img{width:26px;height:26px;object-fit:contain}
+
+  .stats {
+    display:flex;gap:22px;align-items:stretch;flex-wrap:wrap; }
+
+  .nutri {
+    min-width:280px;background:#fff;padding:18px;border-radius:14px;border:3px solid var(--dusty-navy);}
+  .nutri h3{font-family:'DM Serif Display';margin:0 0 10px}
+  .nutri table{width:100%;border-collapse:collapse;font-size:14px}
+  .nutri tr td{padding:6px 4px;border-bottom:1px dashed rgba(0,0,0,0.05)}
+  .bigscore{font-size:20px;color:var(--deep-red);font-weight:700}
+</style>
+
+</head>
+<body>
+<div class="page">
+ <!-- window bar design -->
+  <div class="window" role="main" aria-label="Loriz's room zine">
+    <div class="windowbar">
+      <span class="dot red" aria-hidden="true"></span> 
+      <span class="dot yellow" aria-hidden="true"></span>
+      <span class="dot green" aria-hidden="true"></span>
+      <div style="flex:1"></div>
+      <div class="win-title">Loriz's Portfolio</div>
+    </div>
+
+  
+    <header class="intro-section" role="banner" aria-label="Intro section">
+      <div class="sticker" style="left:18px;top:18px;position:absolute;transform:rotate(-6deg)">
+        <img src="sticker1.jpg" alt="apple sticker">
+      </div>
+      <div class="sticker small" style="right:18px;top:20px;position:absolute;transform:rotate(6deg)">
+        <img src="sticker2.jpg" alt="pudding  sticker">
+      </div>
+
+      <div class="overlay">
+        <div class="hero">
+          <div class="photo"><img src="logo.jpg" alt="your portrait"></div>
+          <div>
+            <h1>Hi, I’m  <span style="color:skyblue;">Loriz!</span></h1>
+            <p class="lead"> my portfolio ✦ about me ✦ project collages <br>
+            I make cozy web layouts, cute forums, and have fun with it — welcome to my room!</p>
+
+            <div style="margin-top:14px" class="sticker-strip" aria-hidden="false">
+              <div class="sticker-btn"><img src="heart.jpg" alt=""><span>Likes</span></div>
+              <div class="sticker-btn"><img src="feels.jpg" alt=""><span>Feels</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section about" aria-labelledby="about-heading">
+      <div class="card">
+        <h2 id="about-heading">About Me</h2>
+        <p style="margin:6px,0, 12px">Hello! I'm <strong>Loriz</strong> of Grade 9-Emerald. I love to draw, paint, and create! This page is my portfolio, where I'll showcase my interests and latest projects! </p>
+
+        <div class="profile-stats">
+          <div class="stat"><span class="labels">Hobbies:</span> drawing, knitting, web design, sticker-collecting</div>
+          <div class="stat"><span class="labels">Interests:</span> Reading webcomics, Math, Music, Photography</div>
+          <div class="stat"><span class="labels">Favorite Subjects:</span> Mathematics, Arts, English, Science</div>
+          <div class="stat"><span class="labels">Tools:</span> Sublime / A LOT of yt / w3schools.com / Pinterest</div>
+        </div>
+
+        <div style="margin-top:12px">
+          <strong>My Socials:</strong>
+          <p style="margin:6px 0;font-family:'Caveat',cursive">"sorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."</p>
+          <b><ul><li><a href="https://www.facebook.com/loriz.santos.395/">Facebook</a><br>
+          <li><a href="https://www.instagram.com/lrz.eanne/">Instagram</a></b></ul>
+        </div>
+      </div>
+
+        <div style="background:linear-gradient(180deg,rgba(255,255,255,0.9),#fff);padding:12px;border-radius:12px;border:2px solid rgba(0,0,0,0.04)">
+          <h3 style="font-family:'DM Serif Display',serif;margin:0 0 8px">More Info!!</h3>
+          <dl style="margin:0; padding-left:18px;">
+            <dt>Favorite colors:</dt>
+           <dd>pink, yellow, blue</dd>
+
+           <dt>Favorite food:</dt>
+           <dd>mac & cheese</dd>
+
+           <dt>Music:</dt>
+           <dd>anything but country 🥲</dd>
+
+           <dt>Dislikes:</dt>
+           <dd>close-mindedness</dd>
+        </dl>
+
+          <div class="moodboard" aria-hidden="false" style="margin-top:12px">
+            <div class="polaroid"><img src="polaroid1.jpg" alt=""><div style="text-align:center;font-size:12px;margin-top:6px">Digital Art</div></div>
+            <div class="polaroid"><img src="polaroid2.jpg" alt=""><div style="text-align:center;font-size:12px;margin-top:6px">Nail Art</div></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    
+    <section class="section" aria-labelled by="gallery-heading" style="background-image:var(--bg-gallery);background-size:cover;background-position:center;">
+      <h2 id="gallery-heading" style="font-family:'DM Serif Display',serif">Gallery & Projects</h2>
+        <div class="sticker" style="right:18px;top:18px;position:absolute;transform:rotate(10deg)">
+        <img src="sticker3.jpg" alt="star sticker">
+      </div>
+
+      <div class="gallery-grid" aria-live="polite">
+        <div class="card-large">
+          <div class="img-wrap"><img src="project1.png" alt="project 1"></div>
+          <div class="caption">My Personal Slambook</div>
+        </div>
+
+        <div class="card-large">
+          <div class="img-wrap"><img src="project2.png" alt="project 2"></div>
+          <div class="caption">Favorite Movies and Shows</div>
+        </div>
+
+        <div class="card-large">
+          <div class="img-wrap"><img src="project3.png" alt="project 3"></div>
+          <div class="caption">My First Form</div>
+        </div>
+        </div>
+      </div>
+
+    <section class="section" aria-labelledby="stats-heading">
+      <h2 id="stats-heading" style="font-family:'DM Serif Display',serif">Profile Facts</h2>
+      <div class="stats">
+        <div class="nutri">
+          <h3>Nutrition Facts — Loriz</h3>
+          <table aria-hidden="false">
+            <tr><td>Creativity</td><td class="bigscore">100%</td></tr>
+            <tr><td>Sleep (estimated)</td><td>20%</td></tr>
+            <tr><td>Stickers Owned</td><td>367</td></tr>
+            <tr><td>Projects Active</td><td>3</td></tr>
+          </table>
+   </div>
+
+        <div style="flex:1">
+          <div style="background:linear-gradient(180deg,rgba(255,255,255,0.98),#fff);padding:16px;border-radius:12px;border:2px solid rgba(0,0,0,0.04)">
+            <h3 style="font-family:'DM Serif Display',serif;margin-top:0">Current Mood</h3>
+            <p style="font-family:'Caveat',cursive;font-size:18px;margin:6px 0 12px">"hungry for sleep and food and more sleep"</p>
+
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <div style="background:#fff;padding:8px 12px;border-radius:10px;border:2px solid rgba(0,0,0,0.04)">Kinda sleep deprived</div>
+              <div style="background:#fff;padding:8px 12px;border-radius:10px;border:2px solid rgba(0,0,0,0.04)">"Gusto ko nang umuwi"</div>
+              <div style="background:#fff;padding:8px 12px;border-radius:10px;border:2px solid rgba(0,0,0,0.04)">Can't wait for Friday bruh</div>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelled by="contact-heading" style="background-image:var(--bg-stats);background-size:cover;background-position:center">
+      <h2 id="contact-heading" style="font-family:'DM Serif Display',serif">Contact</h2> 
+
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <form style="flex: 1; minimum-width:280px; background:rgba(255,255,255,0.96); padding:14px;border-radius:12px;border:2px solid rgba(0,0,0,0.04)">
+          <label style="display:block;margin-bottom:6px;font-weight:600">Your Name</label>
+          <input type="text" placeholder="Luisito Balajadia" style="width:100%;padding:10px;border-radius:8px;border:2px solid;margin-bottom:12px">
+          <label style="display:block;margin-bottom:6px;font-weight:600">Email</label>
+          <input type="email" placeholder="username@domain.com" style="width:100%;padding:10px;border-radius:8px;border:2px solid;margin-bottom:12px">
+
+          <label style="display:block;margin-bottom:6px;font-weight:600"for="dropdown"> Rate my Portfolio! </label>
+    <select style="width: 100%; padding 10px; flex;1; border-radius: 8px;"id="dropdown" name="dropdown">
+      <option value="option1">1-4/10</option>
+      <option value="option2">5-8/10</option>
+      <option value="option3">9-10/10</option>
+    </select>
+         <label style="display:block;margin-bottom:6px;font-weight:600">Message</label>
+          <textarea id="textarea" name="textarea" rows="3" style="width:100%; padding:10px; border-radius:8px;"> </textarea>
+          <div class="form-buttons"> 
+      <input style="display:block;font-weight:600" type="submit" value="SUBMIT">
+      </div>
+      </form>
+
+        
